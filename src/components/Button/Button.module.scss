@@ -1,0 +1,19 @@
+$color: #4FC3F7;
+
+.button {
+    text-decoration: none;
+    padding: 8px 12px;
+    font-weight: 500;
+    background: none;
+    border: 2px solid $color;
+    width: 100%;
+    color: $color;
+    margin-top: 24px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+        background: $color;
+        color: #fff;
+    }
+}

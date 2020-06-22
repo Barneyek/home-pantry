@@ -1,0 +1,11 @@
+.header{
+    display: grid;
+    grid-template-columns: 120px 1fr 100px;
+    align-items: center;
+    background: #4FC3F7;
+    padding: 0 5%;
+    @media only screen and(max-width: 768px) {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+}
