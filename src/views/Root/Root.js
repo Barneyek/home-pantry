@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Root.module.scss';
+import './index.css';
 import AppContext from '../../context';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SettingsView from '../SettingsView/SettingsView';
@@ -21,7 +21,6 @@ class Root extends React.Component{
                 image: mushroom,
                 name: 'Mushroom',
                 quantity: 1,
-                status: 'avaible',
                 minAmount: '3',
                 unit: units[6],
                 category: 'mushrooms',
@@ -58,7 +57,6 @@ class Root extends React.Component{
                 unit: units[4],
                 category: 'others',
             }],
-            isSubmitted: false,
     };
 
     addItem = (e, newItem) => {
@@ -66,24 +64,21 @@ class Root extends React.Component{
         
         this.setState(prevState => ({
             [newItem.category]: [...prevState[newItem.category], newItem],
-            isSubmitted: true,
         }));
     };
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.mushrooms !== this.state.mushrooms) {
-          this.setState({
-            isSubmitted: false,
-          });
-        } else {
-          return;
-        }
-      }
+    removeItem = (name) =>{
+
+        this.setState(prevState =>({
+            vegetables: prevState.vegetables.filter(e => e.name !== name)
+        }));
+    };
 
     render(){
         const contextElements = {
             ...this.state, 
-            addItem: this.addItem
+            addItem: this.addItem,
+            removeItem: this.removeItem,
         }
 
         return(

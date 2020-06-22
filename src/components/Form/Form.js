@@ -7,13 +7,15 @@ import Button from '../Button/Button';
 import { Redirect } from "react-router";
 
 class Form extends React.Component{ 
-    state = {
+    state = {       
         image: '',
         name: '',
         quantity: '',
         minAmount: '',
         unit: '',
         category: 'mushrooms',
+        isSubmitted: false,
+        selectProduct: "",
     }
 
     handleChange = e =>{
@@ -21,7 +23,6 @@ class Form extends React.Component{
             [e.target.name] : e.target.value,
         });
     };
-
 
     resetForm() {
         this.setState({
@@ -31,21 +32,24 @@ class Form extends React.Component{
             minAmount: '',
             unit: '',
             category: 'mushrooms',
+            isSubmitted: false,
      });
     }
-
 
     render(){
         return (
             <AppContext.Consumer>
-                { context => (
+                { context => {
+                    // console.log(context.addItem);
+                    return(
                     <div>
                         <form 
                             autoComplete="off" 
                             className={styles.wrapper} 
-                            onSubmit={
-                                (e) => {context.addItem(e, this.state);
-                                this.resetForm();
+                            onSubmit={(e) => {
+                                context.addItem(e, this.state);
+                                this.isSubmitted=true
+                                this.resetForm();                         
                             }}
                         >
                                 <Input
@@ -96,10 +100,10 @@ class Form extends React.Component{
                                     options={['mushrooms','vegetables','fruits','others',]}
                                 />                    
                             <Button>Add new item</Button>
-                            {context.isSubmitted && <Redirect to="/" />}
+                            {this.isSubmitted && <Redirect to="/" />}
                         </form>
                     </div>
-                )}
+                )}}
             </AppContext.Consumer>
         )
     }
