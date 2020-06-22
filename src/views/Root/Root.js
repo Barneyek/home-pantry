@@ -58,7 +58,6 @@ class Root extends React.Component{
                 unit: units[4],
                 category: 'others',
             }],
-            isSubmitted: false,
     };
 
     addItem = (e, newItem) => {
@@ -66,7 +65,6 @@ class Root extends React.Component{
         
         this.setState(prevState => ({
             [newItem.category]: [...prevState[newItem.category], newItem],
-            isSubmitted: true,
         }));
     };
 

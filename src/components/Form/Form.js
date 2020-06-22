@@ -14,7 +14,9 @@ class Form extends React.Component{
         minAmount: '',
         unit: '',
         category: 'mushrooms',
+        isSubmitted: false,
     }
+
 
     handleChange = e =>{
         this.setState({
@@ -31,9 +33,10 @@ class Form extends React.Component{
             minAmount: '',
             unit: '',
             category: 'mushrooms',
+            isSubmitted: false,
      });
     }
-
+ 
 
     render(){
         return (
@@ -45,7 +48,8 @@ class Form extends React.Component{
                             className={styles.wrapper} 
                             onSubmit={
                                 (e) => {context.addItem(e, this.state);
-                                this.resetForm();
+                                this.isSubmitted=true
+                                this.resetForm();                         
                             }}
                         >
                                 <Input
@@ -96,7 +100,7 @@ class Form extends React.Component{
                                     options={['mushrooms','vegetables','fruits','others',]}
                                 />                    
                             <Button>Add new item</Button>
-                            {context.isSubmitted && <Redirect to="/" />}
+                            {this.isSubmitted && <Redirect to="/" />}
                         </form>
                     </div>
                 )}
