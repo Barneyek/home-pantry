@@ -15,8 +15,8 @@ class Form extends React.Component{
         unit: '',
         category: 'mushrooms',
         isSubmitted: false,
-        selectProduct: "",
     }
+
 
     handleChange = e =>{
         this.setState({
@@ -35,6 +35,7 @@ class Form extends React.Component{
             isSubmitted: false,
      });
     }
+ 
 
     render(){
         return (
