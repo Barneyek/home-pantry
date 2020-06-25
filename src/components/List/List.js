@@ -3,14 +3,14 @@ import ListItem from './ListItem/ListItem';
 import uniqid from "uniqid";
 import styles from "./List.module.scss";
 
-const List = ({items, removeItem}) => {
-
+const List = ({items, removeItem, editItem}) => {
+    console.log(items);
     return(
         <>
             {items.length ? (
                 <ul className={styles.list}>
                     {items.map(item =>(
-                        <ListItem key={uniqid()} {...item} removeItem={removeItem} />
+                        <ListItem key={uniqid()} {...item} removeItem={removeItem} editItem={editItem} />
                     ))}
                 </ul>
             ) : (
@@ -18,6 +18,6 @@ const List = ({items, removeItem}) => {
             )}
         </>
     );
-    }
+}
 
 export default List;

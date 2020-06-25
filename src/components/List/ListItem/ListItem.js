@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ListItem.module.scss';
-import AppContext from "../../../context";
+// import AppContext from "../../../context";
 import '../../../../node_modules/semantic-ui-css/semantic.min.css';
 
 const ListItem = ({
@@ -11,10 +11,11 @@ const ListItem = ({
     unit,
     minAmonut,
     category,
-    removeItem
+    removeItem,
+    editItem
 }) => {
     const ImageTag = image ? 'img' : 'div';
-                    console.log(removeItem)
+        // console.log(removeItem)
 
     return (
             // <AppContext.Consumer>
@@ -46,7 +47,7 @@ const ListItem = ({
                             </div>
                             <div className={styles.col}>
                                 <div className={styles.actions}>
-                                    <i className="icon edit"></i>
+                                    <i className="icon edit" onClick={() => editItem(name)}></i>
                                     <i className="icon times" onClick={() => removeItem(name)}></i>
                                 </div>
                             </div>

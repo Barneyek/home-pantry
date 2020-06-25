@@ -17,7 +17,6 @@ class Form extends React.Component{
         isSubmitted: false,
     }
 
-
     handleChange = e =>{
         this.setState({
             [e.target.name] : e.target.value,
@@ -41,9 +40,10 @@ class Form extends React.Component{
         return (
             <AppContext.Consumer>
                 { context => {
-                    // console.log(context.addItem);
+                    console.log(context.editItem);
                     return(
                     <div>
+                        <h2 className="">{this.props.title}</h2>
                         <form 
                             autoComplete="off" 
                             className={styles.wrapper} 

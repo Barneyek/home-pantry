@@ -72,6 +72,24 @@ class Root extends React.Component{
         this.setState(prevState =>({
             vegetables: prevState.vegetables.filter(e => e.name !== name)
         }));
+
+        this.setState(prevState =>({
+            mushrooms: prevState.mushrooms.filter(e => e.name !== name)
+        }));
+
+        this.setState(prevState =>({
+            fruits: prevState.fruits.filter(e => e.name !== name)
+        }));
+
+        this.setState(prevState =>({
+            others: prevState.others.filter(e => e.name !== name)
+        }));
+    };
+
+
+    editItem = (e, name) =>{
+        e.preventDefault();
+        console.log("siema");
     };
 
     render(){
@@ -79,6 +97,7 @@ class Root extends React.Component{
             ...this.state, 
             addItem: this.addItem,
             removeItem: this.removeItem,
+            editItem: this.editItem,
         }
 
         return(
@@ -87,14 +106,16 @@ class Root extends React.Component{
                 <Header />
                     <Switch>
                         <Route exact path="/">
-                            <List items={this.state.fruits}/>
-                            <List items={this.state.vegetables}/>
-                            <List items={this.state.mushrooms}/>
-                            <List items={this.state.others}/>
+                            <List items={this.state.fruits} removeItem={this.removeItem} />
+                            <List items={this.state.vegetables} removeItem={this.removeItem}/>
+                            <List items={this.state.mushrooms} removeItem={this.removeItem}/>
+                            <List items={this.state.others} removeItem={this.removeItem}/>
                         </Route>
                         <Route path="/shoppinglist" component={ShoppingListView}/>
                         <Route path="/settings" component={SettingsView}/>
                         <Route path="/additem" component={AddItemView}/>
+                        <Route path="/edit/:name" />
+                      
                     </Switch>
                 </AppContext.Provider>
             </BrowserRouter>

@@ -20,7 +20,7 @@ const ShoppingListView = () => {
                const shoppingList = vegetables.concat([], fruits, mushrooms, others); 
             // console.log(context.removeItem)
             return (
-                <List items={shoppingList} removeItem={context.removeItem} /> 
+                <List items={shoppingList} removeItem={context.removeItem} editItem={context.editItem} /> 
             )}}
 
         </AppContext.Consumer>
