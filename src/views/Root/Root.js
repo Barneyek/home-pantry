@@ -15,74 +15,68 @@ import beer from "../../assets/images/beers.svg";
 
 const units = ['kg', 'g', 'l', 'ml', 'bottle', 'pieces', 'packs', 'boxes'];
 
+const categories = new Map([
+    [1, "vegetables"],
+    [2, "fruits"],
+    [3, "others"]
+]);
+// console.log(categories);
+
 class Root extends React.Component{
     state= {
-            mushrooms: [ {
-                image: mushroom,
-                name: 'Mushroom',
-                quantity: 1,
-                minAmount: '3',
-                unit: units[6],
-                category: 'mushrooms',
-            }],
-            vegetables: [ {
-                image: tomato,
-                name: 'tomato',
-                quantity: 5,
-                minAmount: 3,
-                unit: units[0],
-                category: 'vegetables',
-            },
-            {
-                image: tomato,
-                name: 'test',
-                quantity: 1,
-                minAmount: 2,
-                unit: units[1],
-                category: 'vegetables',
-            }],
-            fruits: [ {
-                image: blueberries,
-                name: 'blueberries',
-                quantity: 200,
-                minAmount: 300,
-                unit: units[1],
-                category: 'fruits',
-            }],
-            others: [{
-                image: beer,
-                name: 'beers',
-                quantity: 4,
-                minAmount: 1,
-                unit: units[4],
-                category: 'others',
-            }],
+            products: [ 
+                {
+                    id: 0,
+                    image: mushroom,
+                    name: 'Mushroom',
+                    quantity: 1,
+                    minAmount: 3,
+                    unit: units[6],
+                    category: 3,
+                },
+                {
+                    id: 1,
+                    image: tomato,
+                    name: 'tomato',
+                    quantity: 5,
+                    minAmount: 3,
+                    unit: units[0],
+                    category: 1,
+                },
+                {
+                    id: 2,
+                    image: blueberries,
+                    name: 'blueberries',
+                    quantity: 200,
+                    minAmount: 300,
+                    unit: units[1],
+                    category: 2,
+                },
+                {
+                    id: 3,
+                    image: beer,
+                    name: 'beers',
+                    quantity: 4,
+                    minAmount: 1,
+                    unit: units[4],
+                    category: 1,
+                }
+            ],
+    
     };
+
+   
 
     addItem = (e, newItem) => {
         e.preventDefault();
-        
         this.setState(prevState => ({
-            [newItem.category]: [...prevState[newItem.category], newItem],
+            products: [...prevState.products, newItem],
         }));
     };
-
-    removeItem = (name) =>{
-
+    
+    removeItem = (e, id) =>{
         this.setState(prevState =>({
-            vegetables: prevState.vegetables.filter(e => e.name !== name)
-        }));
-
-        this.setState(prevState =>({
-            mushrooms: prevState.mushrooms.filter(e => e.name !== name)
-        }));
-
-        this.setState(prevState =>({
-            fruits: prevState.fruits.filter(e => e.name !== name)
-        }));
-
-        this.setState(prevState =>({
-            others: prevState.others.filter(e => e.name !== name)
+            products: prevState.products.filter(e => e.id !== id)
         }));
     };
 
@@ -106,16 +100,12 @@ class Root extends React.Component{
                 <Header />
                     <Switch>
                         <Route exact path="/">
-                            <List items={this.state.fruits} removeItem={this.removeItem} />
-                            <List items={this.state.vegetables} removeItem={this.removeItem}/>
-                            <List items={this.state.mushrooms} removeItem={this.removeItem}/>
-                            <List items={this.state.others} removeItem={this.removeItem}/>
+                            <List items={this.state.products} removeItem={this.removeItem} />
                         </Route>
                         <Route path="/shoppinglist" component={ShoppingListView}/>
                         <Route path="/settings" component={SettingsView}/>
                         <Route path="/additem" component={AddItemView}/>
-                        <Route path="/edit/:name" />
-                      
+                        <Route path="/edit/:name" />                 
                     </Switch>
                 </AppContext.Provider>
             </BrowserRouter>

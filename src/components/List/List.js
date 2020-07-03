@@ -4,7 +4,6 @@ import uniqid from "uniqid";
 import styles from "./List.module.scss";
 
 const List = ({items, removeItem, editItem}) => {
-    console.log(items);
     return(
         <>
             {items.length ? (

@@ -6,21 +6,12 @@ const ShoppingListView = () => {
 
     return (
         <AppContext.Consumer>
-
             { context => {
-                let vegetables=[],
-                fruits=[], 
-                others=[], 
-                mushrooms=[];
-              
-               vegetables=context.vegetables.filter((item) => item.minAmount > item.quantity);
-               fruits=context.fruits.filter((item) => item.minAmount > item.quantity);
-               mushrooms=context.mushrooms.filter((item) => item.minAmount > item.quantity);
-               others=context.others.filter((item) => item.minAmount > item.quantity);
-               const shoppingList = vegetables.concat([], fruits, mushrooms, others); 
+               let products = context.products.filter((item) => item.minAmount > item.quantity);
+           
             // console.log(context.removeItem)
             return (
-                <List items={shoppingList} removeItem={context.removeItem} editItem={context.editItem} /> 
+                <List items={products} removeItem={context.removeItem} editItem={context.editItem} /> 
             )}}
 
         </AppContext.Consumer>

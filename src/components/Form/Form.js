@@ -5,9 +5,11 @@ import Input from '../Input/Input';
 import Select from '../Select/Select';
 import Button from '../Button/Button';
 import { Redirect } from "react-router";
+import uniqid from "uniqid";
 
 class Form extends React.Component{ 
-    state = {       
+    state = {     
+        id: uniqid(),
         image: '',
         name: '',
         quantity: '',
@@ -35,12 +37,11 @@ class Form extends React.Component{
      });
     }
  
-
     render(){
         return (
             <AppContext.Consumer>
                 { context => {
-                    console.log(context.editItem);
+                    // console.log(context.editItem);
                     return(
                     <div>
                         <h2 className="">{this.props.title}</h2>
@@ -74,6 +75,7 @@ class Form extends React.Component{
                                     value={this.state.quantity}
                                     type="number"
                                     name="quantity"
+                                    max="50"
                                     required
                                     label="Quantity"
                                     maxLength={10}
@@ -83,6 +85,7 @@ class Form extends React.Component{
                                     value={this.state.minAmount}
                                     type="number"
                                     name="minAmount"
+                                    min="1"
                                     label="Minimum Amount"
                                     maxLength={10}
                                 />
