@@ -1,7 +1,6 @@
 import React from 'react';
+import SettingsForm from '../../components/Form/SettingsForm';
 
-const SettingsView = () => (
-    <p>SettingsView</p>
-)
+const SettingsView = () => <SettingsForm />;
 
 export default SettingsView;

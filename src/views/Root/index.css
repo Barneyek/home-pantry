@@ -18,3 +18,11 @@ body {
     margin-top: 50px;
     width: 980px;
 }
+
+.textRed {
+    color:  #BF360C;
+}
+
+.textGreen {
+    color: #2e7d32;
+}

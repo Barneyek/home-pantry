@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "your_pantry": "Twoja Spiżarnia",
+    "shopping_list": "Lista zakupów",
+    "add_product": "Dodaj nowy projekt",
+    "settings": "Ustawienia"
+  },
+  "listHeader": {
+    "product": "Produkt",
+    "amount": "Ilość",
+    "minimal-amount": "Minimalna ilość",
+    "category": "Kategoria"
+  },
+  "product_form": {
+    "image": "Zdjęcie produktu",
+    "name": "Nazwa produktu",
+    "quantity": "Ilość",
+    "minimal-amount": "Minimalna ilość",
+    "category": "Kategoria",
+    "unit": "Jednostka"
+  },
+  "button": {
+    "save_changes": "Zapisz zmiany",
+    "add": "Dodaj nowy produkt",
+    "edit": "Edytuj produkt"
+  },
+  "title": {
+    "edit" : "Edytuj produkt",
+    "add" : "Dodaj produkt",
+    "no-items": "Brak produktów, dodaj jakiś!",
+    "settings": "Ustawienia"
+  },
+  "choose_language": "Wybierz język:",
+  "english": "Angielski",
+  "polish": "Polski"
+}

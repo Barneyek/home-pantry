@@ -1,27 +1,25 @@
 import React from 'react';
-import Form from "../../components/Form/Form";
-import { useParams } from "react-router-dom";
+import ProductForm from "../../components/Form/ProductForm";
 import AppContext from "../../context";
+import { useParams } from "react-router-dom";
+import { withTranslation } from 'react-i18next/hooks';
 
-
-const EditdItemView = () =>{
+const EditdItemView = ({ match, t }) =>{
     const { id } = useParams();
 
-    const getEditedItem = (items) => {
-        const index = items.findIndex((item) => item.id === id);
-        return items[index];
+    const getEditedProduct = (products) => {
+      const index = products.findIndex((e) => e.id === id);
+      return products[index];
     };
-
+    
     return (
-        <>
         <AppContext.Consumer>
-                { context => {
-                    const editedItem = getEditedItem(context);
-                    return( <Form editedItem={editedItem} /> )
-                }}}
+          {({ products }) => {
+            const editedProduct = getEditedProduct(products);
+            return <ProductForm title={t("title.edit")} editedProduct={editedProduct} />;
+          }}
         </AppContext.Consumer>
-        </>
-    )
+    );
 }
 
-export default EditdItemView;
+export default withTranslation()(EditdItemView);

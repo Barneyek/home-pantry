@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import styles from './ListItem.module.scss';
-// import AppContext from "../../../context";
 import '../../../../node_modules/semantic-ui-css/semantic.min.css';
+import noPhoto from '../../../assets/images/no-photo.svg';
 
 const ListItem = ({
     id,
@@ -10,39 +11,49 @@ const ListItem = ({
     name,
     quantity,
     unit,
-    minAmonut,
+    minimalAmount,
     category,
     removeItem,
-    editItem
 }) => {
-    const ImageTag = image ? 'img' : 'div';
+
+    const ImageTag = image ? "img" : "div";
+    const quantityColors = +minimalAmount > +quantity ? "textRed" : "textGreen";
+
+    const history = useHistory();
     return (
-            <li className={styles.item}>
+            <li className={styles.item} onClick={(e) => history.push(`/edit/${id}`)}>
                 <div className={styles.col}>
                     <div className={styles.product}>
-                        {image && <ImageTag 
-                            className={image ? styles.product__image : styles.product__imageNone}
-                            src={image} 
-                            alt={name}
-                        />}
-                        <div className={styles.product__name}>
-                            <span>{name}</span>
+                        { image ? 
+                            ( 
+                                <ImageTag 
+                                    className={image ? styles.product__image : styles.product__imageNone}
+                                    src={image} 
+                                    alt={name}
+                                />
+                            ) : (
+                              <img  className={styles.product__image} src={noPhoto} alt="no-icon"/>
+                            )
+                        }
+                        <div className={styles.product__nameWrapper}>
+                            <span className={styles.product__name}>{name}</span>
                         </div>
                     </div>
                 </div>
                 <div className={styles.col}>
-                    <div className={styles.amount}>
-                        <div className={styles.amount__quantity}>{quantity}</div>
-                        <span className={styles.amount__unit}>{unit}</span>
+                    <div className={styles.amount} >
+                        <span className={quantityColors}>{quantity}</span>
+                        <span className={quantityColors}>{unit}</span>
                     </div>
                 </div>
                 <div className={styles.col}>
-                    <div className={styles.category}>{category}</div>
+                 <span className={styles.minimalAmount}>{minimalAmount}</span>
                 </div>
                 <div className={styles.col}>
+                    <div className={styles.category}>{category}</div>
                     <div className={styles.actions}>
-                        <i className="icon edit" onClick={() => editItem(name)}></i>
-                        <i className="icon times" onClick={(e) => removeItem(e, id)}></i>
+                        <i className="icon edit" onClick={() => history.push(`/edit/${id}`)}></i>
+                        <i className="icon times" onClick={(e) => {e.stopPropagation();  removeItem(e, id)}}></i>
                     </div>
                 </div>
             </li>
@@ -52,13 +63,14 @@ const ListItem = ({
 ListItem.propTypes = {
     name: PropTypes.string.isRequired,
     image: PropTypes.string,
-    quantity: PropTypes.number,
+    quantity: PropTypes.number.isRequired,
 };
 
 ListItem.defaultProps = {
     image: null,
     quantity: 0,
-    unit: 'kg'
+    unit: "kg",
+    category: "Fruits",
 };
 
 export default ListItem;

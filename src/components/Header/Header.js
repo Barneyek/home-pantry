@@ -1,13 +1,17 @@
 import React from 'react';
-import HeaderNavigation from './HeaderNavigation';
+import HeaderNavigation from './HeaderNavigation/HeaderNavigation';
 import styles from './Header.module.scss';
+import logo from '../../assets/images/logo.svg';
 
 const Header = () => (
     <header className={styles.header}>
-        <div className={styles.logo}>
-            Pantry App
+        <div className={styles.container}> 
+            <div className={styles.logo}>
+                <img src={logo} alt={logo} />
+            </div>
+            <HeaderNavigation/>
         </div>
-        <HeaderNavigation/>
     </header>
-)
+);
+
 export default Header;

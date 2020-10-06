@@ -1,10 +1,11 @@
 import React from 'react';
-import Form from "../../components/Form/Form";
+import ProductForm from "../../components/Form/ProductForm";
+import { withTranslation } from 'react-i18next/hooks';
 
-const AddItemView = () => (
+const AddItemView = ( {t} ) => (
     <div>
-     <Form title="Add product" />
+     <ProductForm title={t("title.add")} />
     </div>
 )
 
-export default AddItemView;
+export default withTranslation()(AddItemView);

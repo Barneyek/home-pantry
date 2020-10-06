@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "your_pantry": "Your Pantry",
+    "shopping_list": "Shopping list",
+    "add_product": "Add new product",
+    "settings": "Settings"
+  },
+  "listHeader": {
+    "product": "Procuct",
+    "amount": "Amount",
+    "minimal-amount": "Minimal Amount",
+    "category": "Category"
+  },
+  "product_form": {
+    "image": "Image of product",
+    "name": "Name of product",
+    "quantity": "Quantity",
+    "minimal-amount": "Minimal Amount",
+    "category": "Category",
+    "unit": "Unit"
+  },
+  "button": {
+    "save_changes": "Save changes",
+    "add": "Add new item",
+    "edit": "Edit product"
+  },
+  "title": {
+    "edit" : "Edit product",
+    "add" : "Add product",
+    "no-items": "There's nothing here yet, please add some items!",
+    "settings": "Settings"
+  },
+  "choose_language": "Choose language:",
+  "english": "English",
+  "polish": "Polish"
+}

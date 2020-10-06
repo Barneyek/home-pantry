@@ -1,22 +1,34 @@
 import React from 'react';
-import ListItem from './ListItem/ListItem';
-import uniqid from "uniqid";
 import styles from "./List.module.scss";
+import ListItem from './ListItem/ListItem';
+import ListHeader from './ListHeader/ListHeader';
+import uniqid from "uniqid";
+import { withTranslation } from 'react-i18next/hooks';
 
-const List = ({items, removeItem, editItem}) => {
-    return(
-        <>
-            {items.length ? (
-                <ul className={styles.list}>
-                    {items.map(item =>(
-                        <ListItem key={uniqid()} {...item} removeItem={removeItem} editItem={editItem} />
-                    ))}
-                </ul>
-            ) : (
-                <h1 className={styles.noItems}>There's nothing here yet, please add some items!</h1>
-            )}
+const List = ({items, removeItem, editItem, selectProduct, t}) => {
+    return (
+       <>
+            {  
+                items.length ? 
+                (
+                    <>
+                        <ListHeader />                
+                        <ul className={styles.list}>         
+                            {items.map(item =>(
+                                <ListItem key={uniqid()} {...item} removeItem={removeItem} editItem={editItem} selectProduct={selectProduct} />
+                            ))}
+                        </ul>
+                    </>
+                ) : (
+                    <div className={styles.wrapper}>
+                        <h1 className={styles.noItems}>
+                        {t("title.no-items")}
+                          </h1>
+                    </div>
+                )
+            }
         </>
     );
 }
 
-export default List;
+export default withTranslation("translation")(List);
