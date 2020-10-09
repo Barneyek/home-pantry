@@ -1,4 +1,5 @@
 .col {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -10,7 +11,7 @@
 
 .item {
     display: grid;
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(5, 20%);
     align-items: center;
     background: #fff;
     margin-bottom: 20px;
@@ -81,6 +82,28 @@
     @media only screen and(max-width: 768px) {
         justify-content: center;
         margin: 0;
+    }
+}
+
+.status {
+    content: '';
+    position: absolute;
+    left: 32px;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+
+    &--green {
+        background: #2e7d32;
+    }
+
+    &--orange {
+        background: orange;
+    }
+
+    &--red {
+        background: #BF360C;
+        ;
     }
 }
 

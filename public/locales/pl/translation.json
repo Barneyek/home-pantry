@@ -9,7 +9,8 @@
     "product": "Produkt",
     "amount": "Ilość",
     "minimal-amount": "Minimalna ilość",
-    "category": "Kategoria"
+    "category": "Kategoria",
+    "status": "Status"
   },
   "product_form": {
     "image": "Zdjęcie produktu",

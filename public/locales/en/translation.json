@@ -9,7 +9,8 @@
     "product": "Procuct",
     "amount": "Amount",
     "minimal-amount": "Minimal Amount",
-    "category": "Category"
+    "category": "Category",
+    "status": "Status"
   },
   "product_form": {
     "image": "Image of product",

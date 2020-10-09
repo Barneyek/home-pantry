@@ -18,6 +18,12 @@ const ListItem = ({
 
     const ImageTag = image ? "img" : "div";
     const quantityColors = +minimalAmount > +quantity ? "textRed" : "textGreen";
+    let color;
+    if (quantity > minimalAmount) {
+      color = "green";
+    } else if (quantity === minimalAmount) {
+      color = "orange";
+    } else color = "red";
 
     const history = useHistory();
     return (
@@ -48,6 +54,9 @@ const ListItem = ({
                 </div>
                 <div className={styles.col}>
                  <span className={styles.minimalAmount}>{minimalAmount}</span>
+                </div>
+                <div className={styles.col}>
+                 <span className={`${styles.status} ${styles[`status--${color}`]}`}></span>
                 </div>
                 <div className={styles.col}>
                     <div className={styles.category}>{category}</div>

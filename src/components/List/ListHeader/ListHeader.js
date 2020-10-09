@@ -6,6 +6,7 @@ import minimumIco from "../../../assets/images/minimize.svg";
 import productIco from "../../../assets/images/supermarket.svg";
 import amountIco from "../../../assets/images/graph.svg";
 import categoryIco from "../../../assets/images/menu.svg";
+import statusIco from "../../../assets/images/status.svg";
 
 const ListHeader = ({t}) => (
         <div className={styles.header}>
@@ -20,6 +21,10 @@ const ListHeader = ({t}) => (
                 <div className={styles.header__item}>
                         <img className={styles.header__icon} src={minimumIco} alt="icon"/>  
                         <span className={styles.header__title}>{t("listHeader.minimal-amount")}</span>
+                </div>
+                <div className={styles.header__item}>
+                        <img className={styles.header__icon} src={statusIco} alt="icon"/>
+                        <span className={styles.header__title}>{t("listHeader.status")}</span>
                 </div>
                 <div className={styles.header__item}>
                         <img className={styles.header__icon} src={categoryIco} alt="icon"/>  
